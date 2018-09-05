@@ -1,0 +1,40 @@
+{
+    "name": "trailoff/php-ramda",
+    "description": "An attempt of implementing Ramda's interface in PHP.",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {},
+    "scripts": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Trailoff\\PHRamda\\": "./src",
+            "": "./src"
+        },
+        "files": [
+            "src/_isFalsy.php",
+            "src/_isTruthy.php",
+            "src/_or.php",
+            "src/add.php",
+            "src/defaultTo.php",
+            "src/flip.php",
+            "src/fromPairs.php",
+            "src/head.php",
+            "src/identity.php",
+            "src/is.php",
+            "src/isEmpty.php",
+            "src/isNil.php",
+            "src/map.php",
+            "src/path.php",
+            "src/pipe.php",
+            "src/prop.php",
+            "src/reduce.php",
+            "src/subtract.php",
+            "src/tail.php",
+            "src/tap.php",
+            "src/toPairs.php"
+        ]
+    }
+}
