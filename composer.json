@@ -32,6 +32,7 @@
             "src/pipe.php",
             "src/prop.php",
             "src/reduce.php",
+            "src/reduceLeft.php",
             "src/subtract.php",
             "src/tail.php",
             "src/tap.php",
