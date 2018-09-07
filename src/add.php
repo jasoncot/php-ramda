@@ -1,6 +1,7 @@
 <?php
 namespace Trailoff\PHRamda;
 
-function add($a, $b) {
-    return $a + $b;
+function add($arg0, $arg1)
+{
+    return $arg0 + $arg1;
 }

@@ -1,8 +1,9 @@
 <?php
 namespace Trailoff\PHRamda;
+
 use Trailoff\PHRamda\isNil;
 
-function defaultTo($a, $b)
+function defaultTo($arg0, $arg1)
 {
-    return isNil($b) ? $a : $b;
+    return isNil($arg1) ? $arg0 : $arg1;
 }

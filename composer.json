@@ -19,6 +19,7 @@
             "src/_or.php",
             "src/add.php",
             "src/compose.php",
+            "src/curry.php",
             "src/defaultTo.php",
             "src/flip.php",
             "src/fromPairs.php",
