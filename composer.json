@@ -33,6 +33,7 @@
             "src/prop.php",
             "src/reduce.php",
             "src/reduceLeft.php",
+            "src/reduceRight.php",
             "src/subtract.php",
             "src/tail.php",
             "src/tap.php",
