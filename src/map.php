@@ -1,17 +1,27 @@
 <?php
 namespace Trailoff\PHRamda;
 
-function map($fn, $arr) {
-    if (!isset($arr) || !isset($fn)) {
-        if (!is_array($arr)) {
-            return [];
-        }
-        return $arr;
+function map($callback, $mappable)
+{
+    if (empty($mappable)) {
+        return  [];
     }
-    $count = count($arr);
+
+    if (method_exists($mappable, "map")) {
+        return $mappable->map($callback);
+    }
+
+    $count = count($mappable);
     $results = [];
     for ($i = 0; $i < $count; $i += 1) {
-        $results[] = $fn($arr[$i]);
+        $results[] = $callback($mappable[$i]);
     }
     return $results;
+}
+
+function c_map($callback)
+{
+    return function ($mappable) use ($callback) {
+        return map($callback, $mappable);
+    };
 }

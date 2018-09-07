@@ -1,12 +1,17 @@
 <?php
 namespace Trailoff\PHRamda;
+
 use function Trailoff\PHRamda\reduce;
 
-function pipe($fns) {
-    return function ($arg0) use ($fns) {
-        $reduceFn = function ($acc, $fn) {
-            return $fn($acc);
-        };
-        return reduce($reduceFn, $arg0, $fns);
+function pipe(...$callbacks)
+{
+    return function ($arg0) use ($callbacks) {
+        return reduce(
+            function ($acc, callable $callback) {
+                return $callback($acc);
+            },
+            $arg0,
+            $callbacks
+        );
     };
 }

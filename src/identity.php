@@ -1,7 +1,7 @@
 <?php
 namespace Trailoff\PHRamda;
 
-function identity($a)
+function identity($arg0)
 {
-    return $a;
+    return $arg0;
 }

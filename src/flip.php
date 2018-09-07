@@ -16,3 +16,12 @@ function flip(callable $callback, $arg0, $arg1)
 {
     return $callback($arg1, $arg0);
 }
+
+function c_flip(callable $callback)
+{
+    return function ($arg0) use ($callback) {
+        return function ($arg1) use ($arg0, $callback) {
+            return $callback($arg1, $arg0);
+        };
+    };
+}
