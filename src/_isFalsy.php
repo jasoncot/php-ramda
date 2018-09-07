@@ -2,16 +2,19 @@
 namespace Trailoff\PHRamda;
 
 /**
- * [_isFalsy description]
- * @param  mixed $a [description]
- * @return boolean    [description]
+ * returns TRUE if the input is null, returns true to empty()
+ * @param  mixed $a the value to be tested
+ * @return boolean  is the value falsy
  */
 function _isFalsy($a)
 {
+    if (empty($a)) {
+        return true;
+    }
     if ($a === null) {
         return true;
     }
-    if (empty($a)) {
+    if (is_numeric($a) === 0) {
         return true;
     }
     if (is_array($a) && count($a) === 0) {
