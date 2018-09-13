@@ -19,6 +19,8 @@
             "src/_or.php",
             "src/add.php",
             "src/apply.php",
+            "src/assoc.php",
+            "src/assocPath.php",
             "src/compose.php",
             "src/curry.php",
             "src/defaultTo.php",
