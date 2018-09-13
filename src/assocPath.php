@@ -9,10 +9,11 @@ use function \Trailoff\PHRamda\head;
 
 /**
  * set the value provided on the subject down the provided path
- * @param  array  $idx     [description]
- * @param  [type] $value   [description]
- * @param  [type] $subject [description]
- * @return [type]          [description]
+ * // TODO: fill in the optics portion of this code to work with things other than strings
+ * @param  array $idx               array of strings, representing lenses or paths to follow on the object
+ * @param  mixed $value             The value to set at the end of the optic
+ * @param  array|\stdClass $subject the subject of the work
+ * @return array|\stdClass          a modified subject with the value set at the path provided
  */
 function assocPath(array $idx, $value, $subject)
 {
@@ -33,7 +34,7 @@ function assocPath(array $idx, $value, $subject)
         [[null, $subject]],
         $idx
     );
-    
+
     return reduce(
         function ($nValue, $pair) {
             list($destKey, $src) = $pair;
