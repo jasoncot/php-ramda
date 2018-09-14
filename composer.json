@@ -1,5 +1,6 @@
 {
     "name": "trailoff/php-ramda",
+    "version": "0.0.1-alpha",
     "description": "An attempt of implementing Ramda's interface in PHP.",
     "type": "library",
     "license": "MIT",
