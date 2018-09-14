@@ -1,15 +1,20 @@
 <?php
 namespace Trailoff\PHRamda;
 
+use Trailoff\PHRamda\keys;
+use Trailoff\PHRamda\prop;
+
 function reduce($callback, $val, $arr)
 {
     if (!isset($callback) || !isset($val) || !isset($arr)) {
         return null;
     }
-    $count = count($arr);
+    $keys = keys($arr);
+    $count = count($keys);
     $acc = $val;
     for ($i = 0; $i < $count; $i += 1) {
-        $acc = $callback($acc, $arr[$i]);
+        $key = $keys[$i];
+        $acc = $callback($acc, prop($key, $arr), $key);
     }
     return $acc;
 }
