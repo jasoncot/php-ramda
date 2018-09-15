@@ -31,6 +31,7 @@
             "src/fromPairs.php",
             "src/head.php",
             "src/identity.php",
+            "src/indexOf.php",
             "src/is.php",
             "src/isEmpty.php",
             "src/isNil.php",
@@ -47,10 +48,12 @@
             "src/reduceLeft.php",
             "src/reduceRight.php",
             "src/reject.php",
+            "src/replace.php",
             "src/subtract.php",
             "src/tail.php",
             "src/tap.php",
-            "src/toPairs.php"
+            "src/toPairs.php",
+            "src/values.php"
         ],
         "classmap": [
             "src/"

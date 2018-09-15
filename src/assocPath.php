@@ -34,7 +34,6 @@ function assocPath(array $idx, $value, $subject)
         [[null, $subject]],
         $idx
     );
-
     return reduce(
         function ($nValue, $pair) {
             list($destKey, $src) = $pair;
