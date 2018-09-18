@@ -1,13 +1,17 @@
 <?php
 namespace Trailoff\PHRamda;
 
+use Trailoff\PHRamda\assoc;
+use Trailoff\PHRamda\reduce;
+
 function fromPairs(array $pairs)
 {
-    $obj = new \stdClass();
-    $cnt = count($pairs);
-    for ($i = 0; $i < $cnt; $i += 1) {
-        list($key, $value) = $pairs[$i];
-        $obj->{$key} = $value;
-    }
-    return $obj;
+    return reduce(
+        function ($acc, $pair) {
+            list($key, $value) = $pair;
+            return assoc($key, $value, $acc);
+        },
+        new \stdClass(),
+        $pairs
+    );
 }
