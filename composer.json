@@ -37,6 +37,7 @@
             "src/isNil.php",
             "src/keys.php",
             "src/map.php",
+            "src/omit.php",
             "src/path.php",
             "src/pathEq.php",
             "src/pathOr.php",
