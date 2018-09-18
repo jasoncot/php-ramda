@@ -1,7 +1,14 @@
 <?php
 namespace Trailoff\PHRamda;
 
-function reduceLeft($callback, $val, $arr)
+/**
+ * [reduceLeft description]
+ * @param  callable $callback [description]
+ * @param  mixed    $val      [description]
+ * @param  mixed[]  $arr      [description]
+ * @return mixed              [description]
+ */
+function reduceLeft(callable $callback, $val, array $arr)
 {
     if (!isset($callback) || !isset($val) || !isset($arr)) {
         return null;
@@ -10,7 +17,7 @@ function reduceLeft($callback, $val, $arr)
     $acc = $val;
     if ($count > 0) {
         while ($count--) {
-            $acc = $callback($acc, $arr[$count]);
+            $acc = $callback($acc, $arr[$count], $count);
         }
     }
     return $acc;
