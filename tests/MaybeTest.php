@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Trailoff\PHRamdaTests;
+namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
-use Trailoff\PHRamda\Functors\Maybe;
+use PHRamda\Functors\Maybe;
 
 final class MaybeTest extends TestCase
 {
@@ -12,13 +12,13 @@ final class MaybeTest extends TestCase
     {
         $testSubject = true;
         $maybe = Maybe::fromValue($testSubject);
-        $this->assertInstanceOf('\\Trailoff\\PHRamda\\Functors\\Just', $maybe);
+        $this->assertInstanceOf('\\PHRamda\\Functors\\Just', $maybe);
         $this->assertTrue($maybe->isJust());
         $this->assertFalse($maybe->isNothing());
         $this->assertEquals($testSubject, $maybe->getOrElse(null));
 
         $maybe = $maybe->map(function () { return false; });
-        $this->assertInstanceOf('\\Trailoff\\PHRamda\\Functors\\Just', $maybe);
+        $this->assertInstanceOf('\\PHRamda\\Functors\\Just', $maybe);
         $this->assertTrue($maybe->isJust());
         $this->assertFalse($maybe->isNothing());
         $this->assertEquals(false, $maybe->getOrElse(null));
@@ -27,11 +27,11 @@ final class MaybeTest extends TestCase
     public function testMaybeNothing(): void
     {
         $maybe = Maybe::fromValue(null);
-        $this->assertInstanceof('\\Trailoff\\PHRamda\\Functors\\Nothing', $maybe);
+        $this->assertInstanceof('\\PHRamda\\Functors\\Nothing', $maybe);
         $this->assertFalse($maybe->isJust());
         $this->assertTrue($maybe->isNothing());
         $this->assertEquals(false, $maybe->getOrElse(false));
         $maybe = $maybe->map(function () { return false; });
-        $this->assertInstanceof('\\Trailoff\\PHRamda\\Functors\\Nothing', $maybe);
+        $this->assertInstanceof('\\PHRamda\\Functors\\Nothing', $maybe);
     }
 }

@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use function \Trailoff\PHRamda\path;
+use function \PHRamda\path;
 
 function pathOr($default, array $idx, $subject = null)
 {

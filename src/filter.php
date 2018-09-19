@@ -1,5 +1,5 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
 function filter(callable $predicate, array $list)
 {

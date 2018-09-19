@@ -1,5 +1,5 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
 /**
  * returns TRUE if the input is null, returns true to empty()

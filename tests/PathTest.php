@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Trailoff\PHRamdaTests;
+namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
-use function Trailoff\PHRamda\path;
+use function PHRamda\path;
 
 final class PathTest extends TestCase
 {

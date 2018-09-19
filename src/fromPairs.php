@@ -1,8 +1,8 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\assoc;
-use Trailoff\PHRamda\reduce;
+use PHRamda\assoc;
+use PHRamda\reduce;
 
 function fromPairs(array $pairs)
 {

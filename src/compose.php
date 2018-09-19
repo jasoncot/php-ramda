@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use function \Trailoff\PHRamda\reduceLeft;
+use function \PHRamda\reduceLeft;
 
 function compose(...$callbacks)
 {

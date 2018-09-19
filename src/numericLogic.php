@@ -1,5 +1,5 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
 function lt($arg0, $arg1)
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\find;
+use PHRamda\find;
 /**
  * get the position of an item in a pool of items
  * @param  mixed $needle          What to look for

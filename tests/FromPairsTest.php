@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Trailoff\PHRamdaTests;
+namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
-use function Trailoff\PHRamda\fromPairs;
-use function Trailoff\PHRamda\prop;
+use function PHRamda\fromPairs;
+use function PHRamda\prop;
 
 final class FromPairsTest extends TestCase
 {

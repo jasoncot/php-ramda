@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Trailoff\\PHRamda\\": "./src",
+            "PHRamda\\": "./src",
             "": "./src"
         },
         "files": [

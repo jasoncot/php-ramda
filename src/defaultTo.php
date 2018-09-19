@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\isNil;
+use PHRamda\isNil;
 
 function defaultTo($arg0, $arg1)
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use \Trailoff\PHRamda\path;
+use \PHRamda\path;
 
 function pathEq(array $idx, $cmpValue, $subject)
 {

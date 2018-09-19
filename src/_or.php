@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use function Trailoff\PHRamda\_isTruthy;
+use function PHRamda\_isTruthy;
 
 function _or($arg0, $arg1)
 {

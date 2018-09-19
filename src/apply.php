@@ -1,6 +1,6 @@
 <?php
 
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
 function apply($callback, ...$args)
 {

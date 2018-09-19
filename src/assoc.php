@@ -1,9 +1,9 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use function \Trailoff\PHRamda\keys;
-use function \Trailoff\PHRamda\prop;
-use function \Trailoff\PHRamda\reduce;
+use function \PHRamda\keys;
+use function \PHRamda\prop;
+use function \PHRamda\reduce;
 
 /**
  * place a value on a copy of the object, either associative array or object

@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\indexOf;
+use PHRamda\indexOf;
 
 /**
  * replace :: a -> b -> c

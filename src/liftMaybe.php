@@ -1,9 +1,9 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\Functors\Maybe;
-use function Trailoff\PHRamda\map;
-use function Trailoff\PHRamda\reduce;
+use PHRamda\Functors\Maybe;
+use function PHRamda\map;
+use function PHRamda\reduce;
 
 function liftMaybe(callable $callback): callable
 {

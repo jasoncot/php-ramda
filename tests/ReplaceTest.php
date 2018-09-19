@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Trailoff\PHRamdaTests;
+namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
-use function Trailoff\PHRamda\assoc;
-use function Trailoff\PHRamda\prop;
-use function Trailoff\PHRamda\replace;
+use function PHRamda\assoc;
+use function PHRamda\prop;
+use function PHRamda\replace;
 
 final class ReplaceTest extends TestCase
 {

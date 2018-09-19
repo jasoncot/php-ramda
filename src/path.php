@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use \Trailoff\PHRamda\prop;
+use \PHRamda\prop;
 
 function path(array $idx, $subject = null)
 {

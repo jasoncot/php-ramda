@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use function Trailoff\PHRamda\{
+use function PHRamda\{
     _isFalsy,
     _isTruthy,
     _or,

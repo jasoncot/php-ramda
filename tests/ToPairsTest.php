@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Trailoff\PHRamdaTests;
+namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
-use function Trailoff\PHRamda\toPairs;
+use function PHRamda\toPairs;
 
 final class ToPairsTest extends TestCase
 {

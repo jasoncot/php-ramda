@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Trailoff\PHRamdaTests;
+namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
-use function Trailoff\PHRamda\reduceRight;
+use function PHRamda\reduceRight;
 
 final class ReduceRightTest extends TestCase
 {

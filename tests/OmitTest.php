@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use function Trailoff\PHRamda\omit;
-use function Trailoff\PHRamda\prop;
+use function PHRamda\omit;
+use function PHRamda\prop;
 
 final class OmitTest extends TestCase
 {

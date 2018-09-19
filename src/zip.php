@@ -1,16 +1,16 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use function Trailoff\PHRamda\reduce;
-use function Trailoff\PHRamda\min;
-use function Trailoff\PHRamda\pipe;
-use function Trailoff\PHRamda\map;
+use function PHRamda\reduce;
+use function PHRamda\min;
+use function PHRamda\pipe;
+use function PHRamda\map;
 
 function zip(...$args): array
 {
     $smallest = pipe(
         map('count'),
-        reduce(['Trailoff\PHRamda', 'min'])
+        reduce(['PHRamda', 'min'])
     )($args);
 
     $argCount = count($args);

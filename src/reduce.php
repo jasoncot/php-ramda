@@ -1,8 +1,8 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\keys;
-use Trailoff\PHRamda\prop;
+use PHRamda\keys;
+use PHRamda\prop;
 
 function reduce($callback, $val, $arr)
 {

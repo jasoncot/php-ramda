@@ -1,11 +1,11 @@
 <?php
 
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use function \Trailoff\PHRamda\prop;
-use function \Trailoff\PHRamda\reduce;
-use function \Trailoff\PHRamda\assoc;
-use function \Trailoff\PHRamda\head;
+use function \PHRamda\prop;
+use function \PHRamda\reduce;
+use function \PHRamda\assoc;
+use function \PHRamda\head;
 
 /**
  * set the value provided on the subject down the provided path

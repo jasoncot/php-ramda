@@ -1,9 +1,9 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\Functors\Either;
-use function Trailoff\PHRamda\map;
-use function Trailoff\PHRamda\reduce;
+use PHRamda\Functors\Either;
+use function PHRamda\map;
+use function PHRamda\reduce;
 
 function liftEither(callable $callback, $error = "An error occured")
 {

@@ -1,8 +1,8 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use Trailoff\PHRamda\isNil;
-use Trailoff\PHRamda\isEmpty;
+use PHRamda\isNil;
+use PHRamda\isEmpty;
 
 /**
  * extract a value/key from an object/array/associative-array.

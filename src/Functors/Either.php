@@ -1,5 +1,5 @@
 <?php
-namespace Trailoff\PHRamda\Functors;
+namespace PHRamda\Functors;
 
 abstract class Either
 {

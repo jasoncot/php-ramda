@@ -1,8 +1,8 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use \Trailoff\PHRamda\prop;
-use \Trailoff\PHRamda\isNil;
+use \PHRamda\prop;
+use \PHRamda\isNil;
 
 function propOr($default, string $key, $subject)
 {

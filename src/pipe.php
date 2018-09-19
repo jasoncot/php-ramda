@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use function Trailoff\PHRamda\reduce;
+use function PHRamda\reduce;
 
 function pipe(...$callbacks)
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Trailoff\PHRamda;
+namespace PHRamda;
 
-use \Trailoff\PHRamda\pipe;
+use \PHRamda\pipe;
 
 function reject(callable $predicate, array $list)
 {
