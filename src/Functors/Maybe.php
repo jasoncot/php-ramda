@@ -1,33 +1,93 @@
 <?php
 namespace Trailoff\PHRamda\Functors;
 
-class Maybe {
-    protected $value;
+abstract class Maybe {
+    public static function just($value): Just
+    {
+        return Just::of($value);
+    }
+
+    public static function nothing(): Nothing
+    {
+        return Nothing::of();
+    }
+
+    public static function fromValue($value, $nullValue = null)
+    {
+        return $value === $nullValue ?
+            Nothing::of() :
+            Just::of($value);
+    }
+
+    abstract public function isJust(): bool;
+    abstract public function isNothing(): bool;
+    abstract public function getOrElse($default);
+    abstract public function map(callable $callback): Maybe;
+}
+
+final class Just extends Maybe {
+    private $value;
+
     public function __construct($value)
     {
         $this->value = $value;
     }
 
-    public static function of($value): Maybe
-    {
-        return new Maybe($value);
-    }
-
     public function isJust(): bool
     {
-        if ($this->value === null) {
-            return false;
-        }
         return true;
     }
 
     public function isNothing(): bool
     {
-        return $this->value === null;
+        return false;
     }
 
-    public function map($callback): Maybe
+    public function getOrElse($default)
     {
-        return Maybe.of($callback($this->value));
+        return $this->value;
     }
+
+    public function map(callable $callback): Maybe
+    {
+        return Just::of($callback($this->value));
+    }
+
+    public static function of($value): Just
+    {
+        return new Just($value);
+    }
+}
+
+final class Nothing extends Maybe
+{
+    public function __construct()
+    {
+    }
+
+    public function isJust(): bool
+    {
+        return false;
+    }
+
+    public function isNothing(): bool
+    {
+        return true;
+    }
+
+    public function getOrElse($default)
+    {
+        return $default;
+    }
+
+    public function map(callable $callback): Maybe
+    {
+        return $this;
+    }
+
+    public static function of(): Nothing
+    {
+        return new Nothing();
+    }
+
 }

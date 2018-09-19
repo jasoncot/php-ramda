@@ -54,7 +54,8 @@
             "src/tail.php",
             "src/tap.php",
             "src/toPairs.php",
-            "src/values.php"
+            "src/values.php",
+            "src/zip.php"
         ],
         "classmap": [
             "src/"
