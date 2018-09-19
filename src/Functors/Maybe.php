@@ -23,6 +23,9 @@ abstract class Maybe {
     abstract public function isNothing(): bool;
     abstract public function getOrElse($default);
     abstract public function map(callable $callback): Maybe;
+    abstract public function orElse(Maybe $maybe): Maybe;
+    abstract public function flatMap(callable $callback): Maybe;
+    abstract public function filter(callable $callback): Maybe;
 }
 
 final class Just extends Maybe {
@@ -51,6 +54,21 @@ final class Just extends Maybe {
     public function map(callable $callback): Maybe
     {
         return Just::of($callback($this->value));
+    }
+
+    public function orElse(Maybe $maybe): Maybe
+    {
+        return $this;
+    }
+
+    public function flatMap(callable $callback): Maybe
+    {
+        return $callback($this->value);
+    }
+
+    public function filter(callable $callback): Maybe
+    {
+        return $f($this->value) ? $this : Maybe::nothing();
     }
 
     public static function of($value): Just
@@ -85,9 +103,23 @@ final class Nothing extends Maybe
         return $this;
     }
 
+    public function orElse(Maybe $maybe): Maybe
+    {
+        return $maybe;
+    }
+
+    public function flatMap(callable $callback): Maybe
+    {
+        return $this;
+    }
+
+    public function filter(callable $callback): Maybe
+    {
+        return $this;
+    }
+
     public static function of(): Nothing
     {
         return new Nothing();
     }
-
 }

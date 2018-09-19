@@ -33,6 +33,5 @@ final class MaybeTest extends TestCase
         $this->assertEquals(false, $maybe->getOrElse(false));
         $maybe = $maybe->map(function () { return false; });
         $this->assertInstanceof('\\Trailoff\\PHRamda\\Functors\\Nothing', $maybe);
-
     }
 }
