@@ -19,6 +19,11 @@
             "src/_isTruthy.php",
             "src/_or.php",
             "src/add.php",
+            "src/adjust.php",
+            "src/all.php",
+            "src/allPass.php",
+            "src/anyPass.php",
+            "src/ap.php",
             "src/apply.php",
             "src/assoc.php",
             "src/assocPath.php",
@@ -54,7 +59,10 @@
             "src/tail.php",
             "src/tap.php",
             "src/toPairs.php",
+            "src/unless.php",
+            "src/unzip.php",
             "src/values.php",
+            "src/when.php",
             "src/zip.php"
         ],
         "classmap": [
