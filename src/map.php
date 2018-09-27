@@ -19,7 +19,7 @@ function map($callback, $mappable)
     return $results;
 }
 
-function c_map($callback)
+function c_map($callback): Closure
 {
     return function ($mappable) use ($callback) {
         return map($callback, $mappable);

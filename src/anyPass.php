@@ -11,9 +11,10 @@ function anyPass(callback $callback, array $subjects): bool
     return $status;
 }
 
-function anyPass(callback $callback)
+function c_anyPass(callback $callback): Closure
 {
-    return function (array $subjects) use ($callback) {
+    return function (array $subjects) use ($callback): bool
+    {
         return anyPass($callback, $subjects);
     };
 }

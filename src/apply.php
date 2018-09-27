@@ -2,10 +2,15 @@
 
 namespace PHRamda;
 
-function apply($callback, ...$args)
+function apply(callable $callback, array $args)
 {
-    return function (...$additionalArgs) use ($callback, $args) {
-        $combined = array_merge($args, $additionalArgs);
-        return $callback(...$combined);
+    return call_user_func_array($callback, $args);
+}
+
+function c_apply(callable $callback): Closure
+{
+    return function (array $args) use ($callback)
+    {
+        return call_user_func_array($callback, $args);
     };
 }
