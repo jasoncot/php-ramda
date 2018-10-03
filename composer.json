@@ -38,6 +38,8 @@
             "src/call.php",
             "src/compose.php",
             "src/curry.php",
+            "src/dissoc.php",
+            "src/dissocPath.php",
             "src/defaultTo.php",
             "src/descend.php",
             "src/filter.php",
