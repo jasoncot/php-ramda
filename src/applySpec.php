@@ -27,3 +27,10 @@ function applySpec($targetSpec, $subject): object
         '\\PHRamda\\fromPairs'
     )($targetSpec);
 }
+
+function c_applySpec($targetSpec): callable
+{
+    return function ($subject) use ($targetSpec) {
+        return applySpec($targetSpec, $subject);
+    };
+}
