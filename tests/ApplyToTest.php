@@ -8,7 +8,7 @@ use function PHRamda\applyTo;
 
 final class ApplyToTest extends TestCase
 {
-    public function baseTestCase(): void
+    public function testBaseCase(): void
     {
         $unaryCallback = function ($input) {
             return strtoupper($input);

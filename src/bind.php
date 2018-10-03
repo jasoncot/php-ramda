@@ -8,7 +8,7 @@ function bind(callable $callback, $context): callable
     };
 }
 
-function bind(callable $callback): callable
+function c_bind(callable $callback): callable
 {
     return function ($context) use ($callback) {
         return bind($callback, $context);
