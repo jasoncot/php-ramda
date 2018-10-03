@@ -55,7 +55,7 @@ final class DissocPathTest extends TestCase
         $this->assertObjectHasAttribute('c', $testSubject->c);
         $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
 
-        $testSubject = dissoc(['c', 'a'], $testSubject);
+        $testSubject = dissocPath(['c', 'a'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectNotHasAttribute('b', $testSubject);
         $this->assertObjectHasAttribute('c', $testSubject);
@@ -64,7 +64,7 @@ final class DissocPathTest extends TestCase
         $this->assertObjectHasAttribute('c', $testSubject->c);
         $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
 
-        $testSubject = dissoc(['c', 'b'], $testSubject);
+        $testSubject = dissocPath(['c', 'b'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectNotHasAttribute('b', $testSubject);
         $this->assertObjectHasAttribute('c', $testSubject);
@@ -73,7 +73,7 @@ final class DissocPathTest extends TestCase
         $this->assertObjectHasAttribute('c', $testSubject->c);
         $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
 
-        $testSubject = dissoc(['c', 'c', 'sub-sub-nested'], $testSubject);
+        $testSubject = dissocPath(['c', 'c', 'sub-sub-nested'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectNotHasAttribute('b', $testSubject);
         $this->assertObjectHasAttribute('c', $testSubject);
@@ -82,7 +82,7 @@ final class DissocPathTest extends TestCase
         $this->assertObjectHasAttribute('c', $testSubject->c);
         $this->assertObjectNotHasAttribute('sub-sub-nested', $testSubject->c->c);
 
-        $testSubject = dissoc(['c', 'c'], $testSubject);
+        $testSubject = dissocPath(['c', 'c'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectNotHasAttribute('b', $testSubject);
         $this->assertObjectHasAttribute('c', $testSubject);
@@ -90,7 +90,7 @@ final class DissocPathTest extends TestCase
         $this->assertObjectNotHasAttribute('b', $testSubject->c);
         $this->assertObjectNotHasAttribute('c', $testSubject->c);
 
-        $testSubject = dissoc(['c'], $testSubject);
+        $testSubject = dissocPath(['c'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectNotHasAttribute('b', $testSubject);
         $this->assertObjectNotHasAttribute('c', $testSubject);

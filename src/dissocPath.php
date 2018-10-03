@@ -4,7 +4,6 @@ namespace PHRamda;
 use function PHRamda\assocPath;
 use function PHRamda\dissoc;
 use function PHRamda\path;
-use function PHRamda\last;
 
 function dissocPath(array $idx, $subject)
 {
@@ -13,7 +12,7 @@ function dissocPath(array $idx, $subject)
         $subIdx = array_slice($idx, 0, $lensCount - 1);
         return assocPath(
             $subIdx,
-            dissoc(last($idx), path($subIdx, $subject)),
+            dissoc(end($idx), path($subIdx, $subject)),
             $subject
         );
     }
