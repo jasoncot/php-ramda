@@ -5,10 +5,10 @@ namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
 use function PHRamda\assoc;
-use function PHRamda\dissoc;
+use function PHRamda\dissocPath;
 use function PHRamda\pipe;
 
-final class DissocTest extends TestCase
+final class DissocPathTest extends TestCase
 {
     public function testBaseCase(): void
     {
@@ -37,7 +37,7 @@ final class DissocTest extends TestCase
         $this->assertObjectHasAttribute('c', $testSubject->c);
         $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
 
-        $testSubject = dissoc('a', $testSubject);
+        $testSubject = dissocPath(['a'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectHasAttribute('b', $testSubject);
         $this->assertObjectHasAttribute('c', $testSubject);
@@ -46,7 +46,7 @@ final class DissocTest extends TestCase
         $this->assertObjectHasAttribute('c', $testSubject->c);
         $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
 
-        $testSubject = dissoc('b', $testSubject);
+        $testSubject = dissocPath(['b'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectNotHasAttribute('b', $testSubject);
         $this->assertObjectHasAttribute('c', $testSubject);
@@ -55,7 +55,42 @@ final class DissocTest extends TestCase
         $this->assertObjectHasAttribute('c', $testSubject->c);
         $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
 
-        $testSubject = dissoc('c', $testSubject);
+        $testSubject = dissoc(['c', 'a'], $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject);
+        $this->assertObjectNotHasAttribute('b', $testSubject);
+        $this->assertObjectHasAttribute('c', $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject->c);
+        $this->assertObjectHasAttribute('b', $testSubject->c);
+        $this->assertObjectHasAttribute('c', $testSubject->c);
+        $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
+
+        $testSubject = dissoc(['c', 'b'], $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject);
+        $this->assertObjectNotHasAttribute('b', $testSubject);
+        $this->assertObjectHasAttribute('c', $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject->c);
+        $this->assertObjectNotHasAttribute('b', $testSubject->c);
+        $this->assertObjectHasAttribute('c', $testSubject->c);
+        $this->assertObjectHasAttribute('sub-sub-nested', $testSubject->c->c);
+
+        $testSubject = dissoc(['c', 'c', 'sub-sub-nested'], $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject);
+        $this->assertObjectNotHasAttribute('b', $testSubject);
+        $this->assertObjectHasAttribute('c', $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject->c);
+        $this->assertObjectNotHasAttribute('b', $testSubject->c);
+        $this->assertObjectHasAttribute('c', $testSubject->c);
+        $this->assertObjectNotHasAttribute('sub-sub-nested', $testSubject->c->c);
+
+        $testSubject = dissoc(['c', 'c'], $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject);
+        $this->assertObjectNotHasAttribute('b', $testSubject);
+        $this->assertObjectHasAttribute('c', $testSubject);
+        $this->assertObjectNotHasAttribute('a', $testSubject->c);
+        $this->assertObjectNotHasAttribute('b', $testSubject->c);
+        $this->assertObjectNotHasAttribute('c', $testSubject->c);
+
+        $testSubject = dissoc(['c'], $testSubject);
         $this->assertObjectNotHasAttribute('a', $testSubject);
         $this->assertObjectNotHasAttribute('b', $testSubject);
         $this->assertObjectNotHasAttribute('c', $testSubject);
