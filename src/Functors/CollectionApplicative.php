@@ -22,5 +22,21 @@ class CollectionApplicative extends Applicative implements IteratorAggregator
     return new static($values);
   }
 
+  public function apply(Applicative $data): Applicative
+  {
+    return $this->pure(
+      array_reduce(
+        $this->values,
+        function ($acc, callable $function) use ($data) {
+          return array_merge($acc,  array_map($function, $data->values));
+        },
+        []
+      )
+    );
+  }
 
+  public function getIterator()
+  {
+    return new ArrayIterator($this->values);
+  }
 }
