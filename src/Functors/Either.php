@@ -1,12 +1,21 @@
 <?php
 namespace PHRamda\Functors;
+use PHRamda\Monads\Monad;
+use PHRamda\Functors\Interfaces\Applicative;
 
-abstract class Either
+abstract class Either extends Monad
 {
     protected $value;
     public function __construct($value)
     {
         $this->value = $value;
+    }
+
+    public static function pure($value): Applicative
+    {
+      return ($value === null) ?
+        self::left($value) :
+        self::right($value);
     }
 
     public static function right($value): Right
@@ -49,31 +58,38 @@ final class Left extends Either
         return false;
     }
 
-    public function getLeft($default) {
+    public function getLeft($default)
+    {
         return $this->value;
     }
 
-    public function getRight($default) {
+    public function getRight($default)
+    {
         return $default;
     }
 
-    public function getOrElse($default) {
+    public function getOrElse($default)
+    {
         return $default;
     }
 
-    public function orElse(Either $either): Either {
+    public function orElse(Either $either): Either
+    {
         return $either;
     }
 
-    public function map(callable $callback): Either {
+    public function map(callable $callback): Either
+    {
         return $this;
     }
 
-    public function flatMap(callable $callback): Either {
+    public function flatMap(callable $callback): Either
+    {
         return $this;
     }
 
-    public function filter(callable $callback, $error): Either {
+    public function filter(callable $callback, $error): Either
+    {
         return $this;
     }
 
@@ -95,31 +111,38 @@ final class Right extends Either
         return true;
     }
 
-    public function getLeft($default) {
+    public function getLeft($default)
+    {
         return $default;
     }
 
-    public function getRight($default) {
+    public function getRight($default)
+    {
         return $this->value;
     }
 
-    public function getOrElse($default) {
+    public function getOrElse($default)
+    {
         return $this->value;
     }
 
-    public function orElse(Either $either): Either {
+    public function orElse(Either $either): Either
+    {
         return $this;
     }
 
-    public function map(callable $callback): Either {
+    public function map(callable $callback): Either
+    {
         return self::of($callback($this->value));
     }
 
-    public function flatMap(callable $callback): Either {
+    public function flatMap(callable $callback): Either
+    {
         return $callback($this->value);
     }
 
-    public function filter(callable $callback, $error): Either {
+    public function filter(callable $callback, $error): Either
+    {
         return $callback($this->Value) ? $this : Left::of($error);
     }
 

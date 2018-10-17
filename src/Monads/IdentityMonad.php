@@ -27,6 +27,17 @@ class IdentityMonad extends Monad
     return $f($this->get());
   }
 
+  public function flatten()
+  {
+    // I do not quite understand what should go here.
+    // flatMap previously referred to not lifting the execution of the function
+    // back into the Container
+  }
+
+  /*
+   * According to Functional-php, the following function is also called
+   *  flatMap in scala.
+   */
   public function apply(Applicative $a): Applicative
   {
     return static::pure($this->get()($a->get()));
