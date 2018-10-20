@@ -1,12 +1,19 @@
 <?php
 namespace PHRamda\Functors\Interfaces;
+use PHRamda\Functors\Interfaces\Functor;
 
 abstract class Applicative implements Functor
 {
-    public abstract static function pure($value);
-    public abstract function apply(Applicative $f): Applicative;
+    abstract public static function pure($value);
+    abstract public function apply(Applicative $f): Applicative;
+
+    /**
+     * apply a value to a provided function and provide a lifted result
+     * @param  callable $f [description]
+     * @return Functor     [description]
+     */
     public function map(callable $f): Functor
     {
-        return $this->pure($f)->apply($this);
+        return static::pure($f)->apply($this);
     }
 }

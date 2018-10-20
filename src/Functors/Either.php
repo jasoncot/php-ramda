@@ -2,6 +2,7 @@
 namespace PHRamda\Functors;
 use PHRamda\Monads\Monad;
 use PHRamda\Functors\Interfaces\Applicative;
+use PHRamda\Functors\Interfaces\Functor;
 
 abstract class Either extends Monad
 {
@@ -14,8 +15,8 @@ abstract class Either extends Monad
     public static function pure($value): Applicative
     {
       return ($value === null) ?
-        self::left($value) :
-        self::right($value);
+        static::left($value) :
+        static::right($value);
     }
 
     public static function right($value): Right
@@ -35,13 +36,35 @@ abstract class Either extends Monad
             self::right($right);
     }
 
+    public function get()
+    {
+      return $this->value;
+    }
+
+    /**
+     * I'm not sure if this is implemented in the correct method. should it return pure?
+     * @param  callable $callback function to call with the current $this->value
+     * @return Monad              a Monad compatable return object
+     */
+    public function bind(callable $callback): Monad
+    {
+      return static::pure($callback($this->get()));
+    }
+
+    public function apply(Applicative $f): Applicative
+    {
+      return static::pure($f->get()($this->get()));
+    }
+
     abstract public function isLeft(): bool;
     abstract public function isRight(): bool;
     abstract public function getLeft($default);
     abstract public function getRight($default);
     abstract public function getOrElse($default);
     abstract public function orElse(Either $either): Either;
-    abstract public function map(callable $callback): Either;
+
+    // abstract public function map(callable $callback): Functor;
+
     abstract public function flatMap(callable $callback): Either;
     abstract public function filter(callable $callback, $error): Either;
 }
@@ -78,7 +101,7 @@ final class Left extends Either
         return $either;
     }
 
-    public function map(callable $callback): Either
+    public function map(callable $callback): Functor
     {
         return $this;
     }
@@ -131,7 +154,7 @@ final class Right extends Either
         return $this;
     }
 
-    public function map(callable $callback): Either
+    public function map(callable $callback): Functor
     {
         return self::of($callback($this->value));
     }
