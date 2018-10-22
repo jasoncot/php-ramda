@@ -4,7 +4,7 @@ use PHRamda\Functors\Interfaces\Functor;
 
 abstract class Applicative implements Functor
 {
-    abstract public static function pure($value);
+    abstract public static function pure($value): Applicative;
     abstract public function apply(Applicative $f): Applicative;
 
     /**

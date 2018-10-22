@@ -10,4 +10,9 @@ abstract class Monad extends Applicative
   }
 
   abstract public function bind(callable $f): Monad;
+
+  public static function of($value): Monad
+  {
+    return static::pure($value);
+  }
 }

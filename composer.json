@@ -43,6 +43,8 @@
             "src/descend.php",
             "src/dissoc.php",
             "src/dissocPath.php",
+            "src/either.php",
+            "src/faltten.php",
             "src/filter.php",
             "src/find.php",
             "src/flip.php",
