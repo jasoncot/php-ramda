@@ -1,9 +1,12 @@
 <?php
 namespace PHRamda;
 
-function call(callable $callback, ...$args0): callable
+/**
+ * @param \Closure $callback
+ * @param mixed ...$args0
+ * @return mixed
+ */
+function call(\Closure $callback, ...$args)
 {
-    return function (...$args1) use ($callback, $args0) {
-        return call_user_func_array($callback, array_merge($args0, $args1));
-    };
+    return $callback(...$args);
 }

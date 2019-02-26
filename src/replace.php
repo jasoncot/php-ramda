@@ -38,3 +38,12 @@ function replace($target, $replaceWith, $subject) {
     }
     return $subject;
 }
+
+function c_replace($target)
+{
+  return function ($replaceWith) use ($target) {
+    return function ($subject) use ($target, $replaceWith) {
+      return replace($target, $replaceWith, $subject);
+    };
+  };
+}

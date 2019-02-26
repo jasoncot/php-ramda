@@ -11,3 +11,9 @@ function tail($subject)
     }
     return null;
 }
+
+// alias for tail
+function rest($subject)
+{
+  return tail($subject);
+}

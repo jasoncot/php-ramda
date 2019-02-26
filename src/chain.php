@@ -1,11 +1,10 @@
 <?php
 namespace PHRamda;
 
-use function PHRamda\append;
-use function PHRamda\reduce;
+use function PHRamda\map;
+use function PHRamda\flatten;
 
-// function chain(callable $callback, array $list)
-// {
-//     $result = $callback()
-//     return append()
-// }
+function chain(callable $callback, array $list)
+{
+    return flatten(map($callback, $list));
+}
