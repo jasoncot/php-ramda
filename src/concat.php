@@ -4,7 +4,7 @@ namespace PHRamda;
 
 function concatStrings(string $arg1, string $arg2): string
 {
-    return $arg1 . $arg2;
+    return $arg1 ?? '' . $arg2 ?? '';
 }
 
 function concatArrays(array $arg1, array $arg2): array
