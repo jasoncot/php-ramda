@@ -38,6 +38,7 @@
             "src/bind.php",
             "src/both.php",
             "src/call.php",
+            "src/chain.php",
             "src/comparitor.php",
             "src/complement.php",
             "src/compose.php",
