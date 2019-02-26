@@ -13,7 +13,7 @@ final class ChainTest extends TestCase
      * @uses \PHRamda\map
      * @uses \PHRamda\flatten
      */
-    public function testCall(): void
+    public function testChain(): void
     {
         $id = function ($a) {
             return $a;
