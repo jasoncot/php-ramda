@@ -19,6 +19,6 @@ final class ComparitorTest extends TestCase
 
         self::assertEquals(-1, $byInt(2, 3));
         self::assertEquals(1, $byInt(3, 2));
-        self::assertEquals(-1, $byInt(3, 3));
+        self::assertEquals(1, $byInt(3, 3));
     }
 }

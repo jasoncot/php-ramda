@@ -5,8 +5,8 @@ namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
 use PHRamda\Monads\Monad;
-use PHRamda\Monads\IdentityMonad;
-use PHRamda\foldMonad;
+use PHRamda\Monads\Identity as IdentityMonad;
+use function PHRamda\foldMonad;
 
 final class FoldMonadTest extends TestCase
 {
@@ -18,6 +18,7 @@ final class FoldMonadTest extends TestCase
     $initial = 0;
     $collection = [1, 2, 3, 4, 5, 6];
     $result = foldMonad($foldCallback, $initial, $collection);
-    var_dump($result);
+
+    $this->assertEquals(IdentityMonad::of(21), $result);
   }
 }

@@ -4,9 +4,10 @@ namespace PHRamda\Functors;
 use PHRamda\Functors\Either;
 use PHRamda\Functors\Interfaces\Applicative;
 use PHRamda\Functors\Interfaces\Functor;
-use PHRamda\Functors\Interfaces\EitherInterface;
+use PHRamda\Functors\Interfaces\Either as EitherInterface;
+use PHRamda\Monads\interfaces\Monad as MonadInterface;
 
-final class Left extends Either
+final class Left extends Either implements MonadInterface
 {
     public static function pure($value): Applicative
     {
@@ -58,7 +59,7 @@ final class Left extends Either
         return $this;
     }
 
-    public static function of($value): EitherInterface
+    public static function of($value): MonadInterface
     {
         return new Left($value);
     }

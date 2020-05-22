@@ -1,17 +1,19 @@
 <?php
-namespace PHRamda\Monads;
-use PHRamda\Functors\Interfaces\Applicative;
 
-abstract class Monad extends Applicative
+namespace PHRamda\Monads;
+
+use PHRamda\Monads\interfaces\Monad as MonadInterface;
+
+abstract class Monad implements MonadInterface
 {
-  public static function return($value): Monad
+  public static function return($value): MonadInterface
   {
     return static::pure($value);
   }
 
-  abstract public function bind(callable $f): Monad;
+  abstract public function bind(callable $f): MonadInterface;
 
-  public static function of($value): Monad
+  public static function of($value): MonadInterface
   {
     return static::pure($value);
   }

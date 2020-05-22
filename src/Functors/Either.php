@@ -1,9 +1,10 @@
 <?php
 namespace PHRamda\Functors;
 use PHRamda\Monads\Monad;
+use PHRamda\Monads\interfaces\Monad as MonadInterface;
 use PHRamda\Functors\Interfaces\Applicative;
 use PHRamda\Functors\Interfaces\Functor;
-use PHRamda\Functors\Interfaces\EitherInterface;
+use PHRamda\Functors\Interfaces\Either as EitherInterface;
 
 abstract class Either extends Monad implements EitherInterface
 {
@@ -23,7 +24,7 @@ abstract class Either extends Monad implements EitherInterface
      * @param  callable $callback function to call with the current $this->value
      * @return Monad              a Monad compatable return object
      */
-    public function bind(callable $callback): Monad
+    public function bind(callable $callback): MonadInterface
     {
       return static::pure($callback($this->get()));
     }

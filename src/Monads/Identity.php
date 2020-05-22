@@ -1,9 +1,11 @@
 <?php
 namespace PHRamda\Monads;
 use PHRamda\Monads\Monad;
+use PHRamda\Monads\interfaces\Monad as MonadInterface;
 use PHRamda\Functors\Interfaces\Applicative;
+use PHRamda\Functors\Interfaces\Functor;
 
-class IdentityMonad extends Monad
+class Identity extends Monad implements MonadInterface
 {
   private $value;
 
@@ -22,7 +24,7 @@ class IdentityMonad extends Monad
     return $this->value;
   }
 
-  public function bind(callable $f): Monad
+  public function bind(callable $f): MonadInterface
   {
     return $f($this->get());
   }
@@ -41,5 +43,10 @@ class IdentityMonad extends Monad
   public function apply(Applicative $a): Applicative
   {
     return static::pure($this->get()($a->get()));
+  }
+
+  public function map(callable $f): Functor
+  {
+    return static::pure($f($this->get()));
   }
 }

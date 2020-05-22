@@ -5,7 +5,7 @@ namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
 use PHRamda\Monads\Monad;
-use PHRamda\Monads\IdentityMonad;
+use PHRamda\Monads\Identity as IdentityMonad;
 
 function check_monad_laws($x, Monad $m, callable $f, callable $g)
 {

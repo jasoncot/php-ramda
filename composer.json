@@ -7,7 +7,7 @@
     "minimum-stability": "stable",
     "require": {},
     "scripts": {
-
+        "test": "phpunit"
     },
     "autoload": {
         "psr-4": {
@@ -54,6 +54,7 @@
             "src/find.php",
             "src/flip.php",
             "src/fromPairs.php",
+            "src/foldMonad.php",
             "src/head.php",
             "src/identity.php",
             "src/indexOf.php",

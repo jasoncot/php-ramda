@@ -1,7 +1,7 @@
 <?php
 namespace PHRamda;
 
-use PHRamda\Monads\IdentityMonad;
+use PHRamda\Monads\Identity as IdentityMonad;
 
 // assumes $collection is a collection of Monads
 function filterMonad(callable $predicate, $collection)

@@ -6,5 +6,14 @@ use function PHRamda\flatten;
 
 function chain(callable $callback, array $list)
 {
-    return flatten(map($callback, $list));
+    $ret = [];
+    foreach ($list as $item) {
+        $itr = $callback($item);
+        if (is_array($itr)) {
+            $ret = concat($ret, $itr);
+        } else {
+            $ret[] = $itr;
+        }
+    }
+    return $ret;
 }
