@@ -2,17 +2,19 @@
 
 namespace PHRamda;
 
+use Closure;
+
 /**
- * @param \Closure $fn
- * @return \Closure
+ * @param Closure $fn
+ * @return Closure
  */
-function addIndex(\Closure $fn): \Closure
+function addIndex(callable $fn): Closure
 {
     /**
      * @param \Closure $innerFn
      * @return \Closure
      */
-    return function (\Closure $innerFn) use ($fn): \Closure
+    return function (callable $innerFn) use ($fn): Closure
     {
         /**
          * @param array $array
