@@ -14,21 +14,33 @@ class Identity extends Monad implements MonadInterface
     $this->value = $value;
   }
 
+  /**
+   * Takes a value and wrap it in a new wrapper object
+   */
   public static function pure($value): Applicative
   {
     return new static($value);
   }
 
+  /**
+   * Extract the value out of the wrapper object
+   */
   public function get()
   {
     return $this->value;
   }
 
+  /**
+   * I'm not certain how this would be any different than Map
+   */
   public function bind(callable $f): MonadInterface
   {
     return $f($this->get());
   }
 
+  /**
+   * Not Implemented, as I'm not certain of this should be a single level or recursive
+   */
   public function flatten()
   {
     // I do not quite understand what should go here.

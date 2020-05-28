@@ -1,36 +1,34 @@
 <?php
 namespace PHRamda;
 
-use function PHRamda\keys;
-use function PHRamda\pipe;
-use function PHRamda\fromPairs;
-use function PHRamda\prop;
-use function PHRamda\toPairs;
-use function PHRamda\c_map;
-
 /**
  * Takes an object or assoc that contains callables that we want to transform, all based on a single input.
- * @param  array|object $targetSpec key-value-pair definition with callables as the value
- * @param  mixed        $subject    The value to pass to the callables
- * @return object                   funnel to an object to ensure consistency and reduce overhead
+ * 
+ * @param  object $targetSpec key-value-pair definition with callables as the value
+ * @param  mixed  $subject    The value to pass to the callables
+ * @return object             funnel to an object to ensure consistency and reduce overhead
  */
-function applySpec($targetSpec, $subject): object
+function applySpec(object $targetSpec = null, $subject = null): object
 {
-    return pipe(
-        '\\PHRamda\\toPairs',
-        c_map(
-            function ($pair) use ($subject)
-            {
-                return [$pair[0], $pair[1]($subject)];
-            }
-        ),
-        '\\PHRamda\\fromPairs'
-    )($targetSpec);
-}
+    $argCount = func_num_args();
 
-function c_applySpec($targetSpec): callable
-{
-    return function ($subject) use ($targetSpec) {
-        return applySpec($targetSpec, $subject);
-    };
+    if ($argCount < 2) {
+        $initialArgs = func_get_args();
+        return partial(
+            function (...$args) {
+                return applySpec(...$args);
+            },
+            $initialArgs
+        );
+    }
+
+    $result = (object) [];
+    foreach ($targetSpec as $key => $mapFn) {
+        if (is_callable($mapFn)) {
+            $result->{$key} = $mapFn($subject);
+        } elseif (is_object($mapFn)) {
+            $result->{$key} = applySpec($mapFn, $subject);
+        }
+    }
+    return $result;
 }

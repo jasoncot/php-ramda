@@ -1,20 +1,30 @@
 <?php
+
 namespace PHRamda;
 
-function anyPass(callback $callback, array $subjects): bool
+/**
+ * @param array $callbacks List of things to test
+ * @param mixed $subject   Value to test
+ * @return boolean|Closure
+ */
+function anyPass(array $callbacks = null, $subject = null)
 {
-    $cnt = count($subjects);
+    $argCount = func_num_args();
+
+    if ($argCount < 2) {
+        $initialArgs = func_get_args();
+        return partial(
+            function (...$args) {
+                return anyPass(...$args);
+            },
+            $initialArgs
+        );
+    }
+
+    $cnt = count($callbacks);
     $status = false;
     for ($i = 0; $i < $cnt; $i += 1) {
-        $status = $status || $callback($subjects[$i]);
+        $status = $status || _isTruthy($callback[$i]($subject));
     }
     return $status;
-}
-
-function c_anyPass(callback $callback): Closure
-{
-    return function (array $subjects) use ($callback): bool
-    {
-        return anyPass($callback, $subjects);
-    };
 }

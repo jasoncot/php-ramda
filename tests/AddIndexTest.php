@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace PHRamdaTests;
+namespace PHRamda\Tests;
 
 use PHPUnit\Framework\TestCase;
-use function PHRamda\{addIndex, curry, map};
+use function PHRamda\{addIndex, curryN, map};
 
 final class AddIndexTest extends TestCase
 {
     public function testAddIndex(): void
     {
-        $map = curry(
+        $map = curryN(
             2, 
             function (callable $callback, array $list) {
                 return map($callback, $list);

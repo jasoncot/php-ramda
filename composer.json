@@ -7,7 +7,7 @@
     "minimum-stability": "stable",
     "require": {},
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit tests/"
     },
     "autoload": {
         "psr-4": {
@@ -43,7 +43,7 @@
             "src/complement.php",
             "src/compose.php",
             "src/concat.php",
-            "src/curry.php",
+            "src/curryN.php",
             "src/defaultTo.php",
             "src/descend.php",
             "src/dissoc.php",
@@ -65,8 +65,10 @@
             "src/liftEither.php",
             "src/liftMaybe.php",
             "src/map.php",
+            "src/multiply.php",
             "src/numericLogic.php",
             "src/omit.php",
+            "src/partial.php",
             "src/path.php",
             "src/pathEq.php",
             "src/pathOr.php",

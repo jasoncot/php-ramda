@@ -5,29 +5,34 @@ namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
 use function PHRamda\add;
-use function PHRamda\curry;
+use function PHRamda\curryN;
 
-final class CurryTest extends TestCase
+final class CurryNTest extends TestCase
 {
-    public function testCurry(): void
+    public function testCurryN(): void
     {
-        $curriedAdd = curry(2, '\PHRamda\add');
+        $curriedAdd = curryN(2, add());
         $add5 = $curriedAdd(5);
         $this->assertEquals(5, $add5(0));
     }
 
     public function testCurryWithValues(): void
     {
-        $add5 = curry(2, '\PHRamda\add', [5]);
+        $add5 = curryN(1, add(5));
         $this->assertEquals(5, $add5(0));
     }
 
     public function testCurryUnhappyPath(): void
     {
-        $curriedAdd = curry(0, '\PHRamda\add');
+        $curriedAdd = curryN(
+            0, 
+            function ($arg0, $arg1) {
+                return $arg0 + $arg1;
+            }
+        );
         try {
             $add5 = $curriedAdd(5);
-            $this->assertTrue($add5);
+            $this->fail('Should not have successfully called without enough arguembts');
         } catch (\ArgumentCountError $er) {
             $this->assertTrue(true);
         }

@@ -10,13 +10,14 @@ final class ApplySpecTest extends TestCase
 {
     public function testBaseCase(): void
     {
-        $testSubject = new \stdClass();
-        $testSubject->testKey = function () {
-            return 'static_value';
-        };
-        $testSubject->testKey_2 = function ($input) {
-            return $input;
-        };
+        $testSubject = (object) [
+            'testKey' => function () {
+                return 'static_value';
+            },
+            'testKey_2' => function ($input) {
+                return $input;
+            },
+        ];
 
         $result = applySpec($testSubject, 'applied_value');
         $this->assertObjectHasAttribute('testKey', $result, 'testKey was removed by the applySpec function.');

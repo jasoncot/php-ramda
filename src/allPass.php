@@ -1,14 +1,28 @@
 <?php
+
 namespace PHRamda;
 
-function allPass(array $callbacks): \Closure
+use function PHRamda\{_isTruthy, partial};
+
+function allPass(array $callbacks = null, $src = null)
 {
-    return function (...$args) use ($callbacks) {
-        $status = true;
-        $cnt = count($callbacks);
-        for ($i = 0; $i < $cnt; $i += 1) {
-            $status = $status && $callbacks[$i](...$args);
-        }
-        return $status;
-    };
+    $argCount = func_num_args();
+
+    if ($argCount < 2) {
+        $initialArgs = func_get_args();
+        return partial(
+            function (...$args) {
+                return allPass(...$args);
+            },
+            $initialArgs
+        );
+    }
+
+    $status = true;
+    $cnt = count($callbacks);
+    for ($i = 0; $i < $cnt; $i += 1) {
+        $status = $status && _isTruthy($callbacks[$i]($src));
+    }
+
+    return $status;
 }

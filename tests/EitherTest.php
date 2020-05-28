@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace PHRamdaTests;
 
 use PHPUnit\Framework\TestCase;
-// use PHRamda\Functors\Either;
 use PHRamda\Functors\Left;
 use PHRamda\Functors\Right;
+use PHRamda\Functors\Either;
 
 use function PHRamda\either;
 
@@ -17,11 +17,13 @@ final class EitherTest extends TestCase
         $testValue = true;
         $leftTestValue = "value was null";
         $subject = either($leftTestValue, $testValue);
-        $this->assertInstanceOf('\\PHRamda\\Functors\\Either', $subject);
+        $this->assertTrue($subject instanceof Either);
+        $this->assertEquals(Right::class, get_class($subject));
         $this->assertEquals($testValue, $subject->getRight(null));
 
         $subject = either($leftTestValue, null);
-        $this->assertInstanceOf('\\PHRamda\\Functors\\Either', $subject);
+        $this->assertTrue($subject instanceof Either);
+        $this->assertEquals(Left::class, get_class($subject));
         $this->assertEquals(null, $subject->getRight(null));
         $this->assertEquals($leftTestValue, $subject->getLeft(null));
     }
@@ -29,35 +31,36 @@ final class EitherTest extends TestCase
     public function testEitherFilter(): void
     {
         $either = either('Left Value', 'Right Value');
-        $this->assertInstanceOf('\\PHRamda\\Functors\\Right', $either);
+        $this->assertEquals(Right::class, get_class($either));
         $either = $either->filter(function ($value) { return $value === 'Right Value'; }, 'was not right value');
-        $this->assertInstanceOf('\\PHRamda\\Functors\\Right', $either);
+        $this->assertEquals(Right::class, get_class($either));
         $either = $either->filter(function ($value) { return $value === 'Left Value'; }, 'was not left value');
-        $this->assertInstanceOf('\\PHRamda\\Functors\\Left', $either);
+        $this->assertEquals(Left::class, get_class($either));
 
         $either = either('LeftValue', null);
-        $this->assertInstanceOf('\\PHRamda\\Functors\\Left', $either);
+        $this->assertEquals(Left::class, get_class($either));
+
         $either = $either->filter(
           function () {
             return false;
           },
           'error message'
         );
-        $this->assertInstanceOf('\\PHRamda\\Functors\\Left', $either);
+        $this->assertEquals(Left::class, get_class($either));
     }
 
     public function testEitherMap(): void
     {
       $either = either('Left Value', 'Right Value');
-      $this->assertInstanceOf('\\PHRamda\\Functors\\Right', $either);
+      $this->assertEquals(Right::class, get_class($either));
       $this->assertEquals('Right Value', $either->getOrElse(null));
 
       $either = $either->map('strtoupper');
       $this->assertEquals('RIGHT VALUE', $either->getOrElse(null));
-      $this->assertInstanceOf('\\PHRamda\\Functors\\Right', $either);
+      $this->assertEquals(Right::class, get_class($either));
 
       $either = Left::of('Left Value');
-      $this->assertInstanceOf('\\PHRamda\\Functors\\Left', $either);
+      $this->assertEquals(Left::class, get_class($either));
       $either = $either->map('strtoupper');
       $this->assertEquals('Left Value', $either->get());
     }
@@ -65,7 +68,7 @@ final class EitherTest extends TestCase
     public function testEitherFlatMap(): void
     {
       $either = Right::of('Right value');
-      $this->assertInstanceOf('\\PHRamda\\Functors\\Right', $either);
+      $this->assertEquals(Right::class, get_class($either));
 
       try {
         $result = $either->flatMap('strtoupper');
@@ -80,7 +83,7 @@ final class EitherTest extends TestCase
         }
       );
 
-      $this->assertInstanceOf('\\PHRamda\\Functors\\Right', $either);
+      $this->assertEquals(Right::class, get_class($either));
       $this->assertEquals('RIGHT VALUE', $either->get());
     }
 }

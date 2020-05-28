@@ -1,8 +1,21 @@
 <?php
 namespace PHRamda;
 
-function map($callback, $mappable)
+function map(callable $callback = null, $mappable = null)
 {
+    $argCount = func_num_args();
+
+    if ($argCount < 2) {
+        $initialArgs = func_get_args();
+        return partial(
+            function (...$args) {
+                return map(...$args);
+            },
+            $initialArgs
+        );
+    }
+
+
     if (empty($mappable)) {
         return  [];
     }
@@ -17,11 +30,4 @@ function map($callback, $mappable)
         $results[] = $callback($mappable[$i]);
     }
     return $results;
-}
-
-function c_map($callback): \Closure
-{
-    return function ($mappable) use ($callback) {
-        return map($callback, $mappable);
-    };
 }

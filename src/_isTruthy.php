@@ -6,8 +6,20 @@ namespace PHRamda;
  * @param  mixed $a the subject to be testing
  * @return boolean    the result of determining the thing is truthy
  */
-function _isTruthy($a)
+function _isTruthy($a = null)
 {
+    $argCount = func_num_args();
+
+    if ($argCount < 1) {
+        $initialArgs = func_get_args();
+        return partial(
+            function (...$args) {
+                return _isTruthy(...$args);
+            },
+            $initialArgs
+        );
+    }
+
     if ($a === null) {
         return false;
     }

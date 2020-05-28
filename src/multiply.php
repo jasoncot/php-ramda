@@ -1,12 +1,15 @@
 <?php
+
 namespace PHRamda;
+
+use function PHRamda\partial;
 
 /**
  * @param number $arg0
  * @param number $arg1
  * @return number
  */
-function add($arg0 = null, $arg1 = null)
+function multiply($arg0 = null, $arg1 = null)
 {
     $argCount = func_num_args();
 
@@ -14,11 +17,11 @@ function add($arg0 = null, $arg1 = null)
         $initialArgs = func_get_args();
         return partial(
             function (...$args) {
-                return add(...$args);
+                return multiply(...$args);
             },
             $initialArgs
         );
     }
 
-    return $arg0 + $arg1;
+    return $arg0 * $arg1;
 }
